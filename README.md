@@ -6,8 +6,15 @@ A real-time DevOps monitoring dashboard that integrates **all 5 Lingo.dev transl
 
 ## Demo
 
-<!-- TODO: Add live demo link after Vercel deployment -->
-<!-- [Live Demo](https://globalops.vercel.app) -->
+**[Live Demo →](https://global-ops-dev-ops-monitoring-multi.vercel.app)**
+
+| URL | Description |
+|-----|-------------|
+| [/](https://global-ops-dev-ops-monitoring-multi.vercel.app/) | Landing page |
+| [/dashboard](https://global-ops-dev-ops-monitoring-multi.vercel.app/dashboard) | Real-time monitoring dashboard |
+| [/logs](https://global-ops-dev-ops-monitoring-multi.vercel.app/logs) | Live log stream with filters |
+| [/alerts](https://global-ops-dev-ops-monitoring-multi.vercel.app/alerts) | Alert management |
+| [/insights](https://global-ops-dev-ops-monitoring-multi.vercel.app/insights) | AI-powered insights |
 
 ### Screenshots
 
