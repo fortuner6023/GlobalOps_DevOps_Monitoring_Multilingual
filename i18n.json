@@ -1,0 +1,21 @@
+{
+  "$schema": "https://lingo.dev/schema/i18n.json",
+  "version": "1.10",
+  "locale": {
+    "source": "en",
+    "targets": ["es", "fr", "de", "ja", "zh"]
+  },
+  "buckets": {
+    "markdown": {
+      "include": ["docs/en/**/*.md"],
+      "output": "docs/[locale]"
+    }
+  },
+  "provider": {
+    "id": "lingo.dev",
+    "model": "best",
+    "apiKey": {
+      "env": "LINGODOTDEV_API_KEY"
+    }
+  }
+}
