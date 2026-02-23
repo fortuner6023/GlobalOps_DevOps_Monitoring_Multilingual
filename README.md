@@ -30,6 +30,33 @@ A real-time DevOps monitoring dashboard that integrates **all 5 Lingo.dev transl
 
 ---
 
+## Demo Video
+
+<video src="images/20260223_190342.mp4" controls width="100%">
+  <a href="images/20260223_190342.mp4">▶ Download Demo Video</a>
+</video>
+
+---
+
+## Screenshots
+
+### Landing Page
+![Landing Page](images/Screenshot%20(1939).png)
+
+### Dashboard — English
+![Dashboard in English](images/Screenshot%20(1940).png)
+
+### Real-time Language Switching
+
+| 🇪🇸 Español | 🇯🇵 日本語 |
+|---|---|
+| ![Spanish](images/Screenshot%20(1941).png) | ![Japanese](images/Screenshot%20(1942).png) |
+
+### Logs Page — 中文 (Chinese)
+![Logs in Chinese](images/Screenshot%20(1943).png)
+
+---
+
 ## What Makes This Special
 
 Most DevOps tools (Grafana, Datadog, PagerDuty) are **English-only**. When a production incident hits at 2 AM and your on-call engineer in Tokyo is staring at English error logs, every second of confusion adds to your MTTR.
