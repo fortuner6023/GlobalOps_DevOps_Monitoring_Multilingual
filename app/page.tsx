@@ -1,11 +1,42 @@
 import Link from "next/link";
-import { Globe, Zap, Shield, ArrowRight, BookOpen } from "lucide-react";
+import {
+  Globe,
+  Zap,
+  Shield,
+  ArrowRight,
+  BookOpen,
+  ExternalLink,
+  Activity,
+} from "lucide-react";
 
 export const dynamic = "force-dynamic";
+
+const LANGUAGES = [
+  { flag: "🇺🇸", name: "English",  sample: "Connection timeout after 30000ms" },
+  { flag: "🇪🇸", name: "Español",  sample: "Tiempo de conexión agotado después de 30000ms" },
+  { flag: "🇫🇷", name: "Français", sample: "Délai de connexion dépassé après 30000ms" },
+  { flag: "🇩🇪", name: "Deutsch",  sample: "Verbindungstimeout nach 30000ms" },
+  { flag: "🇯🇵", name: "日本語",    sample: "30000ms後に接続タイムアウト" },
+  { flag: "🇨🇳", name: "中文",     sample: "连接超时，30000毫秒后" },
+];
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
+      {/* Hackathon badge */}
+      <div className="border-b border-border bg-primary/5 py-2 text-center text-xs text-muted-foreground">
+        🏆 Built for the{" "}
+        <a
+          href="https://lingo.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline font-medium"
+        >
+          Lingo.dev Hackathon
+        </a>{" "}
+        — Feb 2026 &nbsp;·&nbsp; Uses all 5 Lingo.dev tools
+      </div>
+
       {/* Hero */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-cyan-500/10 to-purple-600/20" />
@@ -31,11 +62,12 @@ export default function LandingPage() {
               barriers.
             </p>
 
-            <div className="mt-10 flex items-center justify-center gap-4">
+            <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
               <Link
                 href="/dashboard"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
               >
+                <Activity className="h-4 w-4" />
                 View Dashboard
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -46,7 +78,41 @@ export default function LandingPage() {
                 <BookOpen className="h-4 w-4" />
                 Read Docs
               </Link>
+              <a
+                href="https://github.com/fortuner6023/GlobalOps_DevOps_Monitoring_Multilingual"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"
+              >
+                <ExternalLink className="h-4 w-4" />
+                GitHub
+              </a>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Live language demo strip */}
+      <div className="border-y border-border bg-card/50">
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+            The same log message — translated live across 6 languages
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {LANGUAGES.map((lang) => (
+              <div
+                key={lang.name}
+                className="flex items-start gap-3 rounded-lg border border-border bg-background p-4"
+              >
+                <span className="text-xl shrink-0">{lang.flag}</span>
+                <div>
+                  <p className="text-xs font-semibold text-primary mb-1">{lang.name}</p>
+                  <p className="text-xs text-muted-foreground font-mono leading-relaxed">
+                    {lang.sample}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -91,17 +157,18 @@ export default function LandingPage() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
-              { name: "Compiler", desc: "Build-time UI translation", file: "next.config.ts" },
-              { name: "CLI", desc: "Markdown docs translation", file: "i18n.json" },
-              { name: "SDK", desc: "Runtime content translation", file: "lib/lingo.ts" },
-              { name: "CI/CD", desc: "Auto-translate on push", file: ".github/workflows/" },
-              { name: "MCP", desc: "AI insights in any language", file: "lib/mcp.ts" },
+              { num: "1", name: "Compiler", desc: "Build-time UI translation", file: "next.config.ts", color: "text-blue-400" },
+              { num: "2", name: "CLI",      desc: "Markdown docs translation", file: "i18n.json",       color: "text-green-400" },
+              { num: "3", name: "SDK",      desc: "Runtime content translation", file: "lib/lingo.ts",  color: "text-amber-400" },
+              { num: "4", name: "CI/CD",    desc: "Auto-translate on push",    file: ".github/workflows/", color: "text-purple-400" },
+              { num: "5", name: "MCP",      desc: "AI insights in any language", file: "lib/mcp.ts",   color: "text-cyan-400" },
             ].map((tool) => (
               <div
                 key={tool.name}
                 className="rounded-xl border border-border bg-card p-5 text-center hover:border-primary/30 transition-colors"
               >
-                <p className="text-sm font-bold text-primary mb-1">{tool.name}</p>
+                <p className={`text-xs font-bold mb-1 ${tool.color}`}>#{tool.num}</p>
+                <p className="text-sm font-bold text-foreground mb-1">{tool.name}</p>
                 <p className="text-xs text-muted-foreground mb-2">{tool.desc}</p>
                 <code className="text-xs text-muted-foreground/70">{tool.file}</code>
               </div>
@@ -110,14 +177,41 @@ export default function LandingPage() {
         </div>
       </div>
 
+      {/* CTA */}
+      <div className="border-t border-border bg-card/50">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">See it in action</h2>
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+            Switch languages from the dashboard and watch logs, alerts, and AI insights
+            instantly update — all powered by the Lingo.dev SDK at runtime.
+          </p>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Open Dashboard
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <div className="flex items-center justify-between text-sm text-muted-foreground flex-wrap gap-4">
             <p>🌍 GlobalOps — DevOps Monitoring In Every Language</p>
-            <p>
-              Built with Next.js, Supabase & Lingo.dev
-            </p>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://github.com/fortuner6023/GlobalOps_DevOps_Monitoring_Multilingual"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+              >
+                GitHub
+              </a>
+              <span>·</span>
+              <span>Built with Next.js, Supabase &amp; Lingo.dev</span>
+            </div>
           </div>
         </div>
       </footer>
