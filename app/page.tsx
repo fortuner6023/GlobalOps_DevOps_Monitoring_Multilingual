@@ -65,6 +65,8 @@ export default function LandingPage() {
             <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
               <Link
                 href="/dashboard"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 <Activity className="h-4 w-4" />
@@ -73,6 +75,8 @@ export default function LandingPage() {
               </Link>
               <Link
                 href="/docs/en/getting-started"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent"
               >
                 <BookOpen className="h-4 w-4" />
@@ -187,6 +191,8 @@ export default function LandingPage() {
           </p>
           <Link
             href="/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Open Dashboard
