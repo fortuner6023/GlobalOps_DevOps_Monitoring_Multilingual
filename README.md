@@ -6,6 +6,7 @@ A real-time DevOps monitoring dashboard that integrates **all 5 Lingo.dev transl
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://global-ops-dev-ops-monitoring-multi.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-fortuner6023-181717?logo=github)](https://github.com/fortuner6023/GlobalOps_DevOps_Monitoring_Multilingual)
+[![Article](https://img.shields.io/badge/Article-Hashnode-2962FF?logo=hashnode)](https://blog.unicornfortunes.com/how-i-built-a-multilingual-devops-dashboard-with-all-5-lingo-dev-tools)
 [![Lingo.dev](https://img.shields.io/badge/Powered%20by-Lingo.dev-blue)](https://lingo.dev)
 
 ---
