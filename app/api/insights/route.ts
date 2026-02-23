@@ -7,9 +7,18 @@ import type { AIInsight } from "@/lib/supabase";
 // In-memory fallback
 let insightsFallback: AIInsight[] = generateMockInsights(5);
 
+async function translateInsight(insight: AIInsight, targetLocale: string): Promise<AIInsight> {
+  const [title, description] = await Promise.all([
+    translateText(insight.title, targetLocale),
+    translateText(insight.description, targetLocale),
+  ]);
+  return { ...insight, title, description };
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const limit = parseInt(searchParams.get("limit") || "10");
+  const language = searchParams.get("language") || "en";
 
   try {
     const { data, error } = await supabase
@@ -18,7 +27,12 @@ export async function GET(request: NextRequest) {
       .order("created_at", { ascending: false })
       .limit(limit);
 
-    const insights = data && !error && data.length > 0 ? data : insightsFallback.slice(0, limit);
+    let insights = data && !error && data.length > 0 ? data : insightsFallback.slice(0, limit);
+
+    if (language !== "en") {
+      insights = await Promise.all(insights.map((i) => translateInsight(i, language)));
+    }
+
     return NextResponse.json({ insights });
   } catch (error) {
     console.error("Error fetching insights:", error);

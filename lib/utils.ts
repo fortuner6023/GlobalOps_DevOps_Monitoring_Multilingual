@@ -13,6 +13,8 @@ export function getLanguageFromStorage(): string {
 export function setLanguageInStorage(language: string): void {
   if (typeof window === "undefined") return;
   localStorage.setItem("globalops-language", language);
+  // Also set the 'locale' cookie that LingoProvider's getClientLocale() reads
+  document.cookie = `locale=${language}; path=/; max-age=31536000; SameSite=Lax`;
 }
 
 export type LogLevel = "ERROR" | "WARNING" | "INFO" | "DEBUG";
